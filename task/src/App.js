@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import StyledButton from './StyledButton';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+   super(props);
+   this.state = {
+     step: { answer: '' },
+   };
+   this.markAs = this.markAs.bind(this);
+  }
+
+  markAs() {
+   this.setState({ step: { answer: 'done' } });
+  }
+
+  render(){
+   return (
+     <StyledButton
+       variant="raised"
+       color={(this.state.step.answer === 'done' ? 'primary' : 'default')}
+       onClick={this.markAs}
+      > Done
+      </StyledButton>
+   );
+  }
 }
 
-export default App;
+export default App
