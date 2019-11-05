@@ -22,8 +22,9 @@ class App extends React.Component{
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+        const{randomBetween}=this.state
      if (nextState.randomBetween % 2 === 0){
-         ++nextState.randomBetween
+         this.setState({randomBetween:++nextState.randomBetween})
          return true
         }
     else if (nextState.randomBetween % 2 === 1){
