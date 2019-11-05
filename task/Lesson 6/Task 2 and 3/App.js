@@ -1,5 +1,5 @@
 import React from "react";
-import List from "./List"
+import List from "../../src/List"
 import StyledButton from "./StyledButton"
 
 class App extends React.Component {
