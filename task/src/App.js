@@ -1,32 +1,39 @@
-import React, { Component } from 'react';
-import StyledButton from './StyledButton';
-
+import React from "react";
+import Todo from "./todo"
 
 class App extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.state={
-            names:[
-            "Name 1","Name 2","Name 3","Name 4"
-            ],
-            currentName: null
-        }
-        this.handleClick = this.handleClick.bind(this)
-    }
-    handleClick(){
-         
-        const randomIndex = Math.floor(+ Math.random() * (this.state.names.length))
-        this.setState({currentName:this.state.names[randomIndex]})
-        
-    }
-    render(){
-        return(
-            <div>
-                <h1>{this.state.currentName}</h1>
-                <StyledButton onClick={this.handleClick}>change name!</StyledButton>
-            </div>
-        )
+            textField:'',
+            todos:[],
+        };
     }
     
+    updateTextField(textField){
+        this.setState({ textField: textField.target.value})
+    }
+
+
+    render(){
+        return(
+            <div className="container">
+                <div className="Header">Todo App</div>
+                <div className="btn">++</div>
+                <input type="text"
+                className="textField"
+                value={this.state.textField}
+                onChangeField={textField => this.updateTextField(textField)}
+                />
+            </div>
+
+        );
+    }
+   
+    
+
+  
+    
+
 }
 export default App
