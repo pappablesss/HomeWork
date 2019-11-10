@@ -15,7 +15,7 @@ class Drawer extends React.Component {
     const {expanded}=this.state
     return (
       <div>
-        <button onClick={this.onToggleButtonClick.bind(this)}></button>
+        <button onClick={this.onToggleButtonClick.bind(this)}>CLICK ME</button>
         { expanded ? this.renderDrawer():null }
       </div>
     );
