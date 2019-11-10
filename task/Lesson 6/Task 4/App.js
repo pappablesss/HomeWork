@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import StyledButton from './StyledButton';
 
 
@@ -22,9 +22,8 @@ class App extends React.Component{
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        const{randomBetween}=this.state
      if (nextState.randomBetween % 2 === 0){
-         this.setState({randomBetween:++randomBetween})
+         nextState.randomBetween++
          return true
         }
     else if (nextState.randomBetween % 2 === 1){
