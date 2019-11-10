@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+import React from 'react';
 
 function Test(props){
     return(
-        <div className="card text-white bg-primary mb-3">
-        <div className="card-header"><strong>USERID:</strong>{props.userId}</div>
-        <h4 className="card-title"><strong>title:</strong>{props.title}</h4>
-        <div className="card-body"><strong>body:</strong>{props.body}</div>
+        <div>
+        <div><strong>USERID:</strong>{props.author}</div>
+        <img src={props.url} width= "480" height="720"/>
+        <div><strong>body:</strong>{props.download_url}</div>
         </div>
     )
 }
