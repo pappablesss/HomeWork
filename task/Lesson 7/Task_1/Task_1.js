@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 
 class LoginControl extends React.Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = {isLoggedIn: false};
+    this.state = { isLoggedIn: false };
   }
 
   handleLoginClick() {
-    this.setState({isLoggedIn: true});
+    this.setState({ isLoggedIn: true });
   }
 
   handleLogoutClick() {
-    this.setState({isLoggedIn: false});
+    this.setState({ isLoggedIn: false });
   }
 
   render() {
@@ -52,21 +52,11 @@ function Action(props) {
 }
 
 function LoginButton(props) {
-  return (
-    <button onClick={props.onClick}>
-      Login
-    </button>
-  );
+  return <button onClick={props.onClick}>Login</button>;
 }
 
 function LogoutButton(props) {
-  return (
-    <button onClick={props.onClick}>
-      Logout
-    </button>
-  );
+  return <button onClick={props.onClick}>Logout</button>;
 }
-
-
 
 export default LoginControl;

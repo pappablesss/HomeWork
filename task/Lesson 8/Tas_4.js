@@ -1,42 +1,42 @@
-import React from 'react';
+import React from "react";
 
 function Users({ users, online }) {
-  const status = online ? 'Online' : 'Offline';
+  const status = online ? "Online" : "Offline";
   const usersToRender = users.filter(user => user.online); // change code here
-  const usersItems = usersToRender.map((sort, id) => <li key={id}>{sort.username}</li>); // change code here
+  const usersItems = usersToRender.map((sort, id) => (
+    <li key={id}>{sort.username}</li>
+  )); // change code here
   return (
     <div>
       <h1>Current {status} Users:</h1>
-      <ul>
-        {usersItems}
-      </ul>
+      <ul>{usersItems}</ul>
     </div>
   );
-};
+}
 
 const users = [
   {
-    username: 'Jeff',
+    username: "Jeff",
     online: true
   },
   {
-    username: 'Alan',
+    username: "Alan",
     online: false
   },
   {
-    username: 'Mary',
+    username: "Mary",
     online: true
   },
   {
-    username: 'Jim',
+    username: "Jim",
     online: false
   },
   {
-    username: 'Sara',
+    username: "Sara",
     online: true
   },
   {
-    username: 'Laura',
+    username: "Laura",
     online: true
   }
 ];

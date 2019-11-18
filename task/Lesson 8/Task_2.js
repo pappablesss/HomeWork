@@ -1,26 +1,12 @@
-import React from 'react';
+import React from "react";
 
-const friends = [
-  'Mikenzi',
-  'Cash',
-  'Steven',
-  'Kimmy',
-  'Doug'
-];
+const friends = ["Mikenzi", "Cash", "Steven", "Kimmy", "Doug"];
 
-const List = (props) => {
-  const friends=props.friends;
-  const List = friends.map((friends) => 
-  <li>
-  {friends}
-  </li>
-  )
+const List = props => {
+  const friends = props.friends;
+  const List = friends.map(friends => <li>{friends}</li>);
   // Render a list using the "friends" being passed in.
-  return (
-    <ul>
-      {List}
-    </ul>
-  );
+  return <ul>{List}</ul>;
 };
 
 const Task = () => {

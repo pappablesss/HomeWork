@@ -1,16 +1,12 @@
-import React from "react"
+import React from "react";
 
-const List = (props) => (
-<ul>
+const List = props => (
+  <ul>
     {props.items.map((item, id) => (
-   <li 
-   key={id}
-   onClick={props.deleteTask.bind(this,id)}
-   >
-    {item}
-   </li>
+      <li key={id} onClick={props.deleteTask.bind(this, id)}>
+        {item}
+      </li>
     ))}
-   
-</ul>
-)
-export default List
+  </ul>
+);
+export default List;
