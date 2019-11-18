@@ -4,8 +4,8 @@ import React from 'react';
 function Test(props){
     return(
         <div>
-        <div>{props.status}</div>
-        <div>{props.text}</div>
+        <div>{props.author}</div>
+        <img src={props.download_url} style={{width:800}}></img>
         </div>
     )
 }
