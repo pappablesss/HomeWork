@@ -1,87 +1,80 @@
-import React, { Component } from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
+import { ReactComponent as RubyIcon } from './icons/ruby.svg';
+import { ReactComponent as PythonIcon } from './icons/python.svg';
+import { ReactComponent as JavaIcon } from './icons/java.svg';
+import { ReactComponent as JavacriptIcon } from './icons/javascript.svg';
+import { ReactComponent as PhpIcon } from './icons/php.svg';
+import PropsTypes from "prop-types"
 
-class Succes extends Component {
+const languages = [
+  {name: 'JavaScript', icon: JavacriptIcon},
+  {name: 'Java', icon: JavaIcon},
+  {name: 'Ruby', icon: RubyIcon},
+  {name: 'PHP', icon: PhpIcon},
+  {name: 'Python', icon: PythonIcon},
+];
+
+function LanguagePicker({ languages, selected, onUpdateLanguage }) {
+  return (
+    <ul className="">
+      {languages.map(({name, icon: Icon}) => (
+        <li key={name} className="language" >
+          <button
+            className='btn-clear nav-link'
+            style={name === selected ? { color: 'rgb(187, 46, 31)' } : null}
+            onClick={() => onUpdateLanguage(name)}
+          >
+            <Icon width={32} height={32} className="icon" />
+            {name}
+          </button>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+class Popular extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      error: null,
-      isLoaded: false,
-      imageSlider: [],
-      currentIamgeSlider: 0
+      selectedLanguage: 'JavaScript'
     };
+
+    this.updateLanguage = this.updateLanguage.bind(this);
   }
-  componentDidMount() {
-    fetch("https://picsum.photos/v2/list")
-      .then(res => res.json())
-      .then(
-        data => {
-          this.setState({
-            isLoaded: true,
-            imageSlider: data
-          });
-        },
-        // error handler
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  }
-  handlePrevButton() {
-    let currentIamgeSlider = this.state.currentIamgeSlider;
-    if (currentIamgeSlider !== 0) {
-      this.setState({
-        currentIamgeSlider: currentIamgeSlider - 1
-      });
-    }
-  }
-  handleNextButton() {
-    let currentIamgeSlider = this.state.currentIamgeSlider;
-    if (currentIamgeSlider <= 10) {
-      this.setState({
-        currentIamgeSlider: currentIamgeSlider + 1
-      });
-    } else {
-      this.setState({
-        currentIamgeSlider: 0
-      });
-    }
+  updateLanguage (selectedLanguage) {
+    this.setState({
+      selectedLanguage
+    })
   }
   render() {
-    const { error, isLoaded, imageSlider, currentIamgeSlider } = this.state;
-    if (error) {
-      return <div className="col">Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div className="col">Loading...</div>;
-    } else {
-      return (
-        <div className="container">
-          <div>
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={() => this.handlePrevButton()}
-            >
-              Prev
-            </button>
-            <img
-              src={imageSlider[currentIamgeSlider].download_url}
-              alt="123"
-            ></img>
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={() => this.handleNextButton()}
-            >
-              Next
-            </button>
-            <p>Author: {imageSlider[currentIamgeSlider].author}</p>
-          </div>
-        </div>
-      );
-    }
+    const { selectedLanguage } = this.state;
+    return (
+      <LanguagePicker
+        selected={selectedLanguage}
+        onUpdateLanguage={this.updateLanguage}
+        languages={languages}
+      />
+    )
   }
 }
 
-export default Succes;
+const Task = () => {
+  return (
+    <Popular />
+  );
+};
+
+export default Task;
+LanguagePicker.propTypes = {
+  selected: PropsTypes.oneOf(['JavaScript', 'Java', 'Ruby', 'PHP', 'Python']).isRequired,
+  onUpdateLanguage: PropsTypes.func.isRequired,
+  languages: PropsTypes.arrayOf(
+    PropsTypes.exact( {
+      name: PropsTypes.string.isRequired,
+      icon: PropsTypes.elementType.isRequired
+    })
+  )
+}
