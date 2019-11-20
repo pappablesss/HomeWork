@@ -1,10 +1,11 @@
-import React from "react"
+import React from "react";
 class Drawer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-       expanded: false, };
+      expanded: false
+    };
   }
 
   onToggleButtonClick() {
@@ -12,11 +13,11 @@ class Drawer extends React.Component {
   }
 
   render() {
-    const {expanded}=this.state
+    const { expanded } = this.state;
     return (
       <div>
-        <button onClick={this.onToggleButtonClick.bind(this)}></button>
-        { expanded ? this.renderDrawer():null }
+        <button onClick={this.onToggleButtonClick.bind(this)}>CLICK ME</button>
+        {expanded ? this.renderDrawer() : null}
       </div>
     );
   }
@@ -25,14 +26,19 @@ class Drawer extends React.Component {
     return (
       <nav>
         <ul>
-          <li><a href="#">Some link</a></li>
-          <li><a href="#">Another link</a></li>
-          <li><a href="#">Just one more link</a></li>
+          <li>
+            <a href="#">Some link</a>
+          </li>
+          <li>
+            <a href="#">Another link</a>
+          </li>
+          <li>
+            <a href="#">Just one more link</a>
+          </li>
         </ul>
       </nav>
     );
   }
 }
 
-
-export default Drawer
+export default Drawer;

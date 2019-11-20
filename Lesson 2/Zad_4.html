@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zad_4</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const ChessBoard = () => (
+	<div className="FlexContainer">
+	{
+		Array(8).fill().map(
+      (x, i) => {
+			const reversed = i % 2 !== 0 ? "reversed" : "";
+			return <Row reversed={reversed} key={i} />;
+		})
+	}
+	</div>
+);
+
+const Row = (props) => (
+	<div className={"row " + props.reversed}>
+		{
+			Array(8).fill().map(
+                (x,i) => {
+				const color = i % 2 === 0 ? "white" : "black";
+				return <div className={"square " + color} key={i}/>;
+			})
+		}
+	</div>
+);
+
+ReactDOM.render(
+<ChessBoard />,
+document.getElementById("root")
+);
+    
+    </script>
+  </body>
+</html>

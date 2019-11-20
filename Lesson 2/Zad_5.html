@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zad_5</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const arr= () =>(
+   
+[
+    <div>
+        <li kye="a">a</li>
+        <li kye="b">b</li>
+        <li kye="c">c</li>
+        <li kye="d">d</li>
+        <li kye="e">e</li>
+    </div>
+]
+    
+);
+ReactDOM.render(  
+ arr(),
+    document.getElementById("root")  
+);
+    </script>
+  </body>
+</html>
